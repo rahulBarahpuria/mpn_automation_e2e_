@@ -1,0 +1,5 @@
+path,releasenumber,REGornot,QAornot
+cypress/specs/CUP/CUPRelease.js,22.8.0,Y,N
+cypress/specs/CAP/CAPSample1.js,22.8.1,Y,Y
+cypress/specs/CAP/CAPSample2.js,22.8.1,Y,Y
+cypress/specs/CAP/CAPSample3.js,22.8.2,Y,N

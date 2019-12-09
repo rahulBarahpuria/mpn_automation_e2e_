@@ -1,0 +1,5 @@
+path,releasenumber,REGornot,QAornot,initiative
+cypress/specs/CUP/CUPRelease.js,22.8.0,Y,N,I2308
+cypress/specs/CUP/CUPSample1.js,22.8.0,Y,Y,I2309
+cypress/specs/CUP/CUPSample2.js,22.8.1,Y,Y,I2308
+cypress/specs/CUP/CUPSample3.js,22.8.1,Y,N,I2309

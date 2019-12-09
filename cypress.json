@@ -1,0 +1,9 @@
+{
+    "integrationFolder": "cypress/execute/",
+    "supportFile": "cypress/helpers",
+    "fixturesFolder": "cypress/dataFiles",
+    "defaultCommandTimeout": 6000,
+    "watchForFileChanges": false,
+    "reporter": "cypress-multi-reporters",
+    "browser": "chrome"
+}

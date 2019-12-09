@@ -1,0 +1,12 @@
+{
+  "env": {
+    "venueurl": "https://proxy-qa.broadcloudpbx.net/myphonenext/",
+    "venuename": "mpnqa",
+    "secret": "",
+    "version": "22.8.0_2",
+    "defaultlanguage":"English (United States)",
+    "username": "StandardTrunk12@check.com",
+    "password": "Cisco!2345" 
+
+  }
+}

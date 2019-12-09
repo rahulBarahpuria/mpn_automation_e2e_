@@ -1,0 +1,32 @@
+{
+  "name": "rialtoautomation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress run ",
+    "1spec": "npm run test -- --env configFile=mpnqa --spec \"cypress//specs//CUPAutomation//LoginTest_Sample.js\" --reporter-options configFile=reporter-config.json --headed",
+    "2spec": "npm run test -- --env configFile=mpnqa --spec \"cypress//specs//CUPAutomation//LoginTest.js\" --reporter-options configFile=reporter-config.json --headed",
+    "3spec": "npm run test -- --env configFile=mpnqa --spec \"cypress//specs//CUPAutomation//Callsettings.js\" --reporter-options configFile=reporter-config.json --headed",
+    "mergereports": "npx mochawesome-merge --reportDir cypress/results > mochawesome-report/mochawesome.json",
+    "genreports": "npx mochawesome-report-generator mochawesome-report/mochawesome.json",
+    "delete:reports": "rm cypress/results/* mochawesome-report/* || true",
+    "prereport": "npm run delete:reports"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@cypress/skip-test": "^2.3.0",
+    "concurrently": "^5.0.0",
+    "cypress": "^3.6.1",
+    "cypress-multi-reporters": "^1.2.3",
+    "cypress-select-tests": "^1.4.0",
+    "cypress-xpath": "^1.4.0",
+    "mocha": "^5.2.0",
+    "mocha-junit-reporter": "^1.23.1",
+    "mochawesome": "^4.1.0",
+    "mochawesome-merge": "^2.1.0",
+    "mochawesome-report-generator": "^4.0.1"
+  }
+}
