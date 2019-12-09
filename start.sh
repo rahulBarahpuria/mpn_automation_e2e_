@@ -57,6 +57,11 @@ then
 fi
 
 specPerNode=$((totalSpecs/totalNodes))
+remain=$((totalSpecs%totalNodes))
+if [ $remain -gt 0 ]
+then
+	specPerNode=$((specPerNode+1))
+fi
 
 
 
@@ -66,8 +71,6 @@ endIndex=$((specPerNode-1))
 currentNode=1
 files=($executeDir/*.js)
 
-dq='"'
-sq="'"
 npxcmd="npx cypress run --env configFile=mpnqa --spec"
 resultcmd=""
 tailcmd="--reporter-options configFile=reporter-config.json"
@@ -80,16 +83,14 @@ do
 	pwd
 	ls -ltr
 	echo Start copying test files to $currentNode node
-	while [ $startIndex -le $endIndex ]
+	while [ $startIndex -le $endIndex -a ${files[$startIndex]} ]
 	do	
-		echo Copying ${files[$startIndex]} to $executeDir/segment$currentNode
+		echo COPYING ${files[$startIndex]} to $executeDir/segment$currentNode
 		cp ${files[$startIndex]} $executeDir/segment$currentNode
 		
 		startIndex=$((startIndex + 1))
 		
 	done
-	#npx cypress run --specs $executeDir/segment$currentNode/*
-	echo Before creating spec folder- 
 	pwd
 	specfolder=cypress/execute/segment$currentNode/*.js
 	
