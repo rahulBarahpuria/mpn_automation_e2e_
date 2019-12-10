@@ -4,11 +4,14 @@ echo Running docker container
 # PATH=$PATH:/usr/local/bin/node:/usr/local/bin/nodejs:/usr/local/bin/npm:/usr/local/bin/npx
 # export PATH
 cd /usr/src/app
-# $1=No. of node servers, $2=application (mpn/rep), $3=test category (22.x.x, REG, QA, initiative)
-echo Args passed $1, $2, $3
-totalNodes=$1
+# $1=Test Venue, $2=application (mpn/rep), $3=number of parallel nodes, $4=test category (22.x.x, REG, QA, initiative)
+echo Args passed $1, $2, $3, $4
+
+
+testVenue=$1
 application=$2
-testcategory=$3
+totalNodes=$3
+testcategory=$4
 
 #based on test category, pick up target files from info.csv files
 
@@ -70,8 +73,30 @@ startIndex=0
 endIndex=$((specPerNode-1))
 currentNode=1
 files=($executeDir/*.js)
+configFile=mpnintegration
 
-npxcmd="npx cypress run --env configFile=mpnqa --spec"
+case "$testVenue" in
+	"broadcloud-qa-dc") configFile=mpnqa
+	;;
+	"broadcloud-beta-dc") configFile=mpnbeta
+	;;
+	"broadcloud-tier3-dc") configFile=mpnt3
+	;;
+esac
+	
+	
+# none
+# broadcloud-production-eu-dc
+# broadcloud-production-au-dc
+# broadcloud-beta-dc
+# broadcloud-qa-dc
+# broadcloud-integration-dc
+# broadcloud-production-us-dc
+# broadcloud-tier3-dc
+# broadcloud-production-jp-dc
+# broadcloud-vzmm-dc
+
+npxcmd="npx cypress run --env configFile=$configFile --spec"
 resultcmd=""
 tailcmd="--reporter-options configFile=reporter-config.json"
 while [ $currentNode -le $totalNodes ]
